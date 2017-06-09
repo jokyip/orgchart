@@ -22,6 +22,7 @@
     "gulp-util": "^3.0.7",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
+    "needle": "^1.6.0",
     "oauth2_client": "0.0.2",
     "passport": "^0.3.2",
     "passport-http-bearer": "^1.0.1",
