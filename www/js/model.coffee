@@ -3,6 +3,7 @@ fetch = require 'isomorphic-fetch'
 reduxApi = require 'redux-api'
 adapter = require 'redux-api/lib/adapters/fetch'
 update = require 'react-addons-update'
+config = require './config.json'
 
 history = []
 
@@ -45,7 +46,7 @@ rest = reduxApi
 rest
   .use 'fetch', adapter fetch
   .use 'server', true
-  .use 'rootUrl', 'https://mppsrc.ogcio.hksarg/twhtang/mpp'
+  .use 'rootUrl', config.ROOTURL
   .use 'options', (url, params, getState) ->
     headers:
       Accept: 'application/json'
