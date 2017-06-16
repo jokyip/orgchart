@@ -37,7 +37,7 @@ class Users extends React.Component
 
   render: ->
     node = (user) ->
-      props = Object.assign {key: user.email, title: user.email}, _.omit user, 'title'
+      props = Object.assign {key: user.email, title: "#{user.email}, #{JSON.stringify(user)}"}, _.omit user, 'title'
       E Tree.TreeNode, props, user.subordinates?.map node
     E Tree, @props, @props.users.data?.results?.map node
 
