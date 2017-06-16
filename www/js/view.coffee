@@ -6,6 +6,7 @@ Tree = require 'rc-tree'
 Dialog = require 'rc-dialog'
 update = require 'react-addons-update'
 Promise = require 'bluebird'
+_ = require 'lodash'
 
 class Users extends React.Component
   @defaultProps:
@@ -36,7 +37,7 @@ class Users extends React.Component
 
   render: ->
     node = (user) ->
-      props = Object.assign {key: user.email, title: user.email}, user
+      props = Object.assign {key: user.email, title: user.email}, _.omit user, 'title'
       E Tree.TreeNode, props, user.subordinates?.map node
     E Tree, @props, @props.users.data?.results?.map node
 
