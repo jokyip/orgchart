@@ -20,8 +20,10 @@ rest = reduxApi
       update data,
         results:
           $apply: (users) ->
-            _.sortBy users, (user) ->
-              user.email.toLowerCase()
+            _.map (_.sortBy users, (user) ->
+              user.email.toLowerCase()), (user) ->
+                 user.photoUrl = "#{config.IMURL}#{user.photoUrl}" if user.photoUrl?
+                 return user
     reducer: (state, action) ->
       if action.type == rest.events.user.actionSuccess
         data = action.data
@@ -40,8 +42,11 @@ rest = reduxApi
       update data,
         subordinates:
           $apply: (users) ->
-            _.sortBy users, (user) ->
-              user.email.toLowerCase()
+             _.map (_.sortBy users, (user) ->
+              user.email.toLowerCase()), (user) ->
+                 user.photoUrl = "#{config.IMURL}#{user.photoUrl}" if user.photo
+Url?
+                 return user
 
 rest
   .use 'fetch', adapter fetch

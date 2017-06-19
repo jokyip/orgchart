@@ -20,6 +20,7 @@ gulp.task 'config', ->
     'CLIENT_ID'
     'SCOPE'
     'ROOTURL'
+    'IMURL'
   ]
   params.map (name) ->
     assert name of process.env, "process.env.#{name} not yet defined"
