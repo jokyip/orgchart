@@ -42,11 +42,10 @@ rest = reduxApi
       update data,
         subordinates:
           $apply: (users) ->
-             _.map (_.sortBy users, (user) ->
+            _.map (_.sortBy users, (user) ->
               user.email.toLowerCase()), (user) ->
-                 user.photoUrl = "#{config.IMURL}#{user.photoUrl}" if user.photo
-Url?
-                 return user
+                user.photoUrl = "#{config.IMURL}#{user.photoUrl}" if user.photoUrl?
+                return user
 
 rest
   .use 'fetch', adapter fetch
